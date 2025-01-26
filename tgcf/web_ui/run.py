@@ -1,10 +1,11 @@
 import os
 from importlib import resources
 
-import tgcf.web_ui as wu
+import tgcf as tg
 from tgcf.config import CONFIG
 
-package_dir = resources.path(package=wu, resource="").__enter__()
+package_dir = resources.path(package=tg, resource="").__enter__()
+package_dir = str(package_dir) + "/web_ui"
 
 def main():
     print(package_dir)
