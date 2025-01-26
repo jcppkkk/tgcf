@@ -65,32 +65,23 @@ Make sure you are on a supported environment and have python:3.10 or above, inst
 - Create a directory and move into it.
 
   ```shell
-  mkdir my-tgcf
-  cd my-tgcf
+  git clone https://github.com/jcppkkk/tgcf
+  cd tgcf
   ```
 
-- Create a python virtual environment and activate it.
+- Create a virtual environment and activate it. Install uv following the instructions [here](https://docs.astral.sh/uv/getting-started/installation/).
 
   ```shell
-  python3 -m venv .venv
-  source .venv/bin/activate
-  ```
-
-- Install tgcf using `pip`
-
-  ```shell
-  pip install tgcf
-  tgcf --version
+  uv sync
   ```
 
 - Set the password for accessing web interface.
   The password is to be set in the `.env` file.
 
   ```shell
-  echo "PASSWORD=hocus pocus qwerty utopia" >> .env
+  echo 'import secrets;print("PASSWORD="+secrets.token_urlsafe(20))' | uv run - >> .env
+  cat .env
   ```
-
-  Set your own password, instead of whats given above.
 
   _Security advice_:
 
@@ -101,7 +92,7 @@ Make sure you are on a supported environment and have python:3.10 or above, inst
 - Start the web-server.
 
   ```shell
-  tgcf-web
+  uv run tgcf-web
   ```
 
 To run tgcf without the web-ui read about
